@@ -14,5 +14,5 @@ def build(string, k):
             small += 1
         large = max(large, index - small + 1)
     return large
-value = build("11223",2)
+value = build("aabbcc",3)
 print (value)
