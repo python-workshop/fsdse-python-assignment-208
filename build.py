@@ -1,18 +1,16 @@
-def build(string, k):
+def longest_substr(string, k):
     if string is None:
-        return False
+        raise TypeError('string cannot be None')
     if k is None:
-        return False
-    small = 0
-    large = 0
-    index_map = {}
+        raise TypeError('k cannot be None')
+    low_index = 0
+    max_length = 0
+    chars_to_index_map = {}
     for index, char in enumerate(string):
-        index_map[char] = index
-        if len(index_map) > k:
-            small = min(index_map.values())
-            del index_map[string[small]]
-            small += 1
-        large = max(large, index - small + 1)
-    return large
-value = build("aabbcc",3)
-print (value)
+        chars_to_index_map[char] = index
+        if len(chars_to_index_map) > k:
+            low_index = min(chars_to_index_map.values())
+            del chars_to_index_map[string[low_index]]
+            low_index += 1
+        max_length = max(max_length, index - low_index + 1)
+    return max_length
